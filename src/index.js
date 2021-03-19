@@ -13,7 +13,7 @@ class Wrapper extends React.Component {
     console.log(this.props.match)
     return(
       <Router>
-        <div>
+        <div className="bg-dark vh-100">
 
           <Switch>
             <Route path="/:id" component={User} />

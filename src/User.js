@@ -26,7 +26,7 @@ class User extends React.Component {
         return(
             <div>
                 <Link to={{pathname:"/" , state: `${id}` }}>Back</Link>
-                <h1>User: {id}</h1>
+                <h1>Github User: {id}</h1>
                 <div id="userResult"></div>
             </div>
         );

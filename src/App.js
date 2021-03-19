@@ -23,14 +23,17 @@ class App extends React.Component {
               const repos = res.data;
               const result = document.getElementById('result');
               result.textContent = '';
-              const reposGrid = document.createElement('ul');
-    
-              for(let repository of repos){
-                const respositoryItem = document.createElement('li');
-                respositoryItem.innerHTML = `<a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
-                reposGrid.append(respositoryItem);
+              if(repos.length > 0){
+                const reposGrid = document.createElement('ul');
+                for(let repository of repos){
+                  const respositoryItem = document.createElement('li');
+                  respositoryItem.innerHTML = `<a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
+                  reposGrid.append(respositoryItem);
+                }
+                result.append(reposGrid);
+              } else {
+                result.innerHTML = `<span>No Repositories</span>`;
               }
-              result.append(reposGrid);
     
           })
           .catch(e => {
@@ -45,15 +48,20 @@ class App extends React.Component {
             const repos = res.data;
             const result = document.getElementById('result');
             result.textContent = '';
-            const reposGrid = document.createElement('ul');
-            for(let repository of repos){
-              const respositoryItem = document.createElement('li');
-              respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer">${repository.owner.login}</a>
-                                           - 
-                                           <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
-              reposGrid.append(respositoryItem);
+            if(repos.length > 0){
+              console.log(repos);
+              const reposGrid = document.createElement('ul');
+              for(let repository of repos){
+                const respositoryItem = document.createElement('li');
+                respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer">${repository.owner.login}</a>
+                                            - 
+                                            <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
+                reposGrid.append(respositoryItem);
+              }  
+              result.append(reposGrid);
+            } else {
+              result.innerHTML = `<span>No Starred Repositories</span>`;
             }
-            result.append(reposGrid);
           })
           .catch(e => {
               const result = document.getElementById('result');
@@ -73,18 +81,20 @@ class App extends React.Component {
       render() {
         console.log(this.props);
         return(
-          <div>
-            <h1>Search user:</h1>
-            <input type='string' value={this.state.user} onChange={this.handleChange}></input>
-            <button onClick={this.searchRepos}>Repositories</button>
-            <button onClick={this.searchStarred}>Starred</button>
-            
-              <h2>User detail: <Link to={`/${this.state.user}`}>{this.state.user}</Link></h2>
-            
-            <div id="result">
+        <div className="row m-2">
+          <div className="col-4 offset-4">
+            <h1 className="mb-2 text-warning">Search user:</h1>
+            <input type='string' value={this.state.user} onChange={this.handleChange} className="form-control mb-2"></input>
+            <div> 
+              <button onClick={this.searchRepos} className="btn btn-warning m-2">Repositories</button>
+              <button onClick={this.searchStarred} className="btn btn-warning m-2">Starred</button>            
+            </div>
+            <h2 className="text-danger">User detail &#8658; <Link to={`/${this.state.user}`} className="text-decoration-none">{this.state.user}</Link></h2>
+            <div id="result" className="bg-light rounded-3">
     
             </div>
           </div>
+        </div>
         );
       }
     };
