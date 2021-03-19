@@ -35,7 +35,7 @@ class App extends React.Component {
           })
           .catch(e => {
             const result = document.getElementById('result');
-            result.innerHTML = `<h3>User Not Found!</h3>`;
+            result.innerHTML = `<span>No Data</spana>`;
           })
           
       }
@@ -48,27 +48,38 @@ class App extends React.Component {
             const reposGrid = document.createElement('ul');
             for(let repository of repos){
               const respositoryItem = document.createElement('li');
-              respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer">${repository.owner.login}</a> - <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
+              respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer">${repository.owner.login}</a>
+                                           - 
+                                           <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
               reposGrid.append(respositoryItem);
             }
             result.append(reposGrid);
           })
           .catch(e => {
               const result = document.getElementById('result');
-              result.innerHTML = `<h3>User Not Found!</h3>`;
+              result.innerHTML = `<span>No Data</span>`;
             })
     
       }
-
+      componentWillMount(){
+        if(this.props.history.action==='POP') {
+          this.props.location.state='';
+          this.setState(state => ({user: ''}))
+        } else {
+          const persistentUser = this.props.location.state;
+          this.setState(state => ({user: persistentUser.substring(1)}))
+        }
+    }
       render() {
+        console.log(this.props);
         return(
           <div>
-            <h1>Enter user:</h1>
+            <h1>Search user:</h1>
             <input type='string' value={this.state.user} onChange={this.handleChange}></input>
             <button onClick={this.searchRepos}>Repositories</button>
             <button onClick={this.searchStarred}>Starred</button>
             
-              <h2>User: <Link to={`/${this.state.user}`}>{this.state.user}</Link></h2>
+              <h2>User detail: <Link to={`/${this.state.user}`}>{this.state.user}</Link></h2>
             
             <div id="result">
     

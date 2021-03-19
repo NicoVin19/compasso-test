@@ -10,18 +10,22 @@ class User extends React.Component {
     }
     componentDidMount(){
         const userResult = document.getElementById('userResult');
-        axios.get(`https://api.github.com/users${this.props.match.url}`)
+        const username = this.props.match.url
+        const data = username.substring(1)
+        axios.get(`https://api.github.com/users/${data}`)
           .then(res => {
-            userResult.innerHTML = `<a href={"${res.data.html_url}"}>${res.data.html_url}</a>`
+            userResult.innerHTML = `<a href={"${res.data.html_url}"} target="_blank" rel="noopener noreferrer">${res.data.html_url}</a>`
         })
           .catch(e => {
-            userResult.innerHTML = `<h3>USER NOT FOUND</h3>`
+            userResult.innerHTML = `<span>USER NOT FOUND</span>`
           })
     }
+
     render() {
         let id = this.props.match.url;
         return(
             <div>
+                <Link to={{pathname:"/" , state: `${id}` }}>Back</Link>
                 <h1>User: {id}</h1>
                 <div id="userResult"></div>
             </div>
