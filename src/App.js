@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios'; 
+import {Link} from 'react-router-dom';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          user: ''
+          user: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.searchRepos = this.searchRepos.bind(this);
@@ -14,13 +15,6 @@ class App extends React.Component {
       }
       handleChange(e){
         this.setState(state => ({user: e.target.value}));
-        /*axios.get(`https://api.github.com/users/${this.state.user}`)
-          .then(res => {
-            console.log(res.data); //CHECKING IF USER EXISTS!
-          })
-          .catch(e => {
-            console.log("error");
-          })*/
     
       }
       searchRepos(){
@@ -65,6 +59,7 @@ class App extends React.Component {
             })
     
       }
+
       render() {
         return(
           <div>
@@ -72,8 +67,9 @@ class App extends React.Component {
             <input type='string' value={this.state.user} onChange={this.handleChange}></input>
             <button onClick={this.searchRepos}>Repositories</button>
             <button onClick={this.searchStarred}>Starred</button>
-            <h2>User: {this.state.user}</h2>
-    
+            
+              <h2>User: <Link to={`/${this.state.user}`}>{this.state.user}</Link></h2>
+            
             <div id="result">
     
             </div>
