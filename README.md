@@ -25,7 +25,7 @@ Dado um determinado usuário, deverá ser possível navegar diretamente até a p
 
 ## Frameworks/ Ferramentas
 
-- React JS
+- React
 - React Router
 - Axios
 - Bootstrap
