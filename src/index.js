@@ -10,10 +10,9 @@ class Wrapper extends React.Component {
     super(props);
   }
   render(){
-    console.log(this.props.match)
     return(
       <Router>
-        <div className="bg-dark vh-100">
+        <div className="bg-secondary vh-100 w-auto">
 
           <Switch>
             <Route path="/:id" component={User} />

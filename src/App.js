@@ -27,7 +27,7 @@ class App extends React.Component {
                 const reposGrid = document.createElement('ul');
                 for(let repository of repos){
                   const respositoryItem = document.createElement('li');
-                  respositoryItem.innerHTML = `<a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
+                  respositoryItem.innerHTML = `<a href="${repository.html_url}" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none fw-normal">${repository.html_url}</a>`;
                   reposGrid.append(respositoryItem);
                 }
                 result.append(reposGrid);
@@ -49,13 +49,12 @@ class App extends React.Component {
             const result = document.getElementById('result');
             result.textContent = '';
             if(repos.length > 0){
-              console.log(repos);
               const reposGrid = document.createElement('ul');
               for(let repository of repos){
                 const respositoryItem = document.createElement('li');
-                respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer">${repository.owner.login}</a>
+                respositoryItem.innerHTML = `<a href="https://gist.github.com/${repository.owner.login}" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none fw-normal">${repository.owner.login}</a>
                                             - 
-                                            <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer">${repository.html_url}</a>`;
+                                            <a href="${repository.html_url}" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none fw-normal">${repository.html_url}</a>`;
                 reposGrid.append(respositoryItem);
               }  
               result.append(reposGrid);
@@ -79,18 +78,20 @@ class App extends React.Component {
         }
     }
       render() {
-        console.log(this.props);
         return(
-        <div className="row m-2">
-          <div className="col-4 offset-4">
-            <h1 className="mb-2 text-warning">Search user:</h1>
-            <input type='string' value={this.state.user} onChange={this.handleChange} className="form-control mb-2"></input>
+        <div className="row pt-4">
+          <div className="col-10 offset-1 col-lg-6 offset-lg-3 bg-dark rounded-3 px-2">
+            <h1 className="m-2 text-warning fw-light">Search user:</h1>
+            <div className="col-10">
+            <input type='string' value={this.state.user} onChange={this.handleChange} className="form-control m-2"></input>
+            </div>
+            
             <div> 
               <button onClick={this.searchRepos} className="btn btn-warning m-2">Repositories</button>
               <button onClick={this.searchStarred} className="btn btn-warning m-2">Starred</button>            
             </div>
-            <h2 className="text-danger">User detail &#8658; <Link to={`/${this.state.user}`} className="text-decoration-none">{this.state.user}</Link></h2>
-            <div id="result" className="bg-light rounded-3">
+            <h3 className="text-danger m-2 fw-normal">User detail &#8658; <Link to={`/${this.state.user}`} className="text-light text-decoration-none">{this.state.user}</Link></h3>
+            <div id="result" className="bg-light rounded-3 m-2">
     
             </div>
           </div>
