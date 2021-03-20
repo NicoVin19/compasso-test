@@ -26,6 +26,15 @@ Dado um determinado usuário, deverá ser possível navegar diretamente até a p
 ## Frameworks/ Ferramentas
 
 - React
+    ```
+    npx create-react-app
+    ```
 - React Router
+    ```
+    npm i react-router-dom
+    ```
 - Axios
+    ```
+    npm i axios
+    ```
 - Bootstrap
