@@ -10,7 +10,7 @@ class User extends React.Component {
     }
     componentDidMount(){
         const userResult = document.getElementById('userResult');
-        const username = this.props.match.url
+        const username = this.props.match.url;
         const data = username.substring(1)
         axios.get(`https://api.github.com/users/${data}`)
           .then(res => {
