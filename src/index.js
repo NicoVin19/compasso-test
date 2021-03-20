@@ -12,12 +12,10 @@ class Wrapper extends React.Component {
   render(){
     return(
       <Router>
-        <div className="bg-secondary vh-100 w-auto">
-
+        <div className="bg-white vh-100 w-auto">
           <Switch>
             <Route path="/:id" component={User} />
             <Route path="/" exact component={App} />
-
           </Switch>
         </div>
       </Router>

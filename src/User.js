@@ -6,19 +6,19 @@ import {Link} from 'react-router-dom';
 class User extends React.Component {
     constructor(props){
         super(props);
-
     }
+
     componentDidMount(){
         const userResult = document.getElementById('userResult');
         const username = this.props.match.url;
         const data = username.substring(1)
         axios.get(`https://api.github.com/users/${data}`)
-          .then(res => {
-            userResult.innerHTML = `<a href="${res.data.html_url}" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none fw-normal">${res.data.html_url}</a>`
-        })
-          .catch(e => {
-            userResult.innerHTML = `<p class="text-dark text-decoration-none fw-normal">USER NOT FOUND</p>`
-          })
+            .then(res => {
+                userResult.innerHTML = `<a href="${res.data.html_url}" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none fw-normal">${res.data.html_url}</a>`
+            })
+            .catch(e => {
+                userResult.innerHTML = `<p class="text-dark text-decoration-none fw-normal">USER NOT FOUND</p>`
+            })
     }
 
     render() {
@@ -31,7 +31,6 @@ class User extends React.Component {
                         
                     </div>
                     <Link to={{pathname:"/" , state: `${id}` }} className="btn btn-secondary m-2">Back</Link>
-
                 </div>
             </div>
         );
