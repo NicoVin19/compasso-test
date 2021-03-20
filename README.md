@@ -16,8 +16,16 @@ Dado um determinado usuário, deverá ser possível navegar diretamente até a p
 - Gostariamos de pesquisar por usuario.
 - Gostariamos de ao clicar no botão de repos, listar repositorios do usuario pesquisado.
 - Gostariamos de ao clicar no botão de starred, listar os repositorios mais visitados por aquele usuario.
-### Endpoint
-- user: https://api.github.com/users/USER_GITHUB
-- Endpoint repos: https://api.github.com/users/USER_GITHUB/repos
-- Endpoint starred: https://api.github.com/users/USER_GITHUB/starred{/owner}{/repo}
 
+#### Endpoint
+
+- User: https://api.github.com/users/USER_GITHUB
+- Repos: https://api.github.com/users/USER_GITHUB/repos
+- Starred: https://api.github.com/users/USER_GITHUB/starred{/owner}{/repo}
+
+## Frameworks/ Ferramentas
+
+- React JS
+- React Router
+- Axios
+- Bootstrap
