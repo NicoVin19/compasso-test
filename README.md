@@ -13,11 +13,11 @@ Ao clicar nos botões de repos e starred, deverá mostrar uma lista simples de c
 
 Dado um determinado usuário, deverá ser possível navegar diretamente até a página de detalhe do usuário sem que seja necessário efetuar uma nova busca. Ex: http://localhost:3000/USER_GITHUB
 
--Gostariamos de pesquisar por usuario.
--Gostariamos de ao clicar no botão de repos, listar repositorios do usuario pesquisado.
--Gostariamos de ao clicar no botão de starred, listar os repositorios mais visitados por aquele usuario.
+--Gostariamos de pesquisar por usuario.
+--Gostariamos de ao clicar no botão de repos, listar repositorios do usuario pesquisado.
+--Gostariamos de ao clicar no botão de starred, listar os repositorios mais visitados por aquele usuario.
 
--Endpoint user: https://api.github.com/users/USER_GITHUB
--Endpoint repos: https://api.github.com/users/USER_GITHUB/repos
--Endpoint starred: https://api.github.com/users/USER_GITHUB/starred{/owner}{/repo}
+--Endpoint user: https://api.github.com/users/USER_GITHUB
+--Endpoint repos: https://api.github.com/users/USER_GITHUB/repos
+--Endpoint starred: https://api.github.com/users/USER_GITHUB/starred{/owner}{/repo}
 
